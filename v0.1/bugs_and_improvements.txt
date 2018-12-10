@@ -1,0 +1,43 @@
+// BUGS //
+
+1. load.paraPointAddHandler is cloning all list elements and appending them. Need to find a way to clone 
+    only first element. 
+    - May require IDs as I'll want to pass an event handler (for removal) to the new li. 
+    - Other option is to reattach event handlers to all point-removal buttons upon each new creation..
+    - Also may not need to worry as the next version of the structure may render this unnecessary
+
+
+
+// IMPROVEMENTS //
+
+1. Ability to remove para-points after adding them
+2. Change structure of points cards to have side-tab menu with a + at the bottom. This could get around 
+    bug #1 above.. Ye I like that idea
+    - This could be one of the card template types
+3. data.saveData() - would be nice to have an object with keys for different editable types and then use
+    that to define the object key I update (instead of a long if else statement).
+4. Revamp data structure to allow extensibility
+    - Need flat structure, probably an object with ids and card order in its metadata
+    - Need to build the conceptual structure and data model out properly
+
+
+
+// DREAMS //
+
+1. Build into functioning web-app with log-in and data persistence
+2. Get a real designer on to it
+3. Build menu of card-templates and allow those to be dropped in and associated with different nodes
+4. Fully extensible - as many layers as desired
+5. Pull data from planning area into writing area for reference
+
+
+
+// LEARNING //
+
+1. Understand needs, use-cases, and problem better from beginning
+2. Figure out your data structure first! Draw it up
+    - OK not first.. you need to have a rough go at build before you can know what your data structure 
+        is going to be. But ideally you'll optimise that to waste as little time as possible
+3. Keep users as close as possible
+4. Build low-res af wireframes to understand desired user experience. Really tho - your first draft will
+    likely bear little resemblance to the final product

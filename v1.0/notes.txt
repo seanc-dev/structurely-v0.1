@@ -1,0 +1,5 @@
+//Atlas cluster info:
+
+// user: sean-dev
+// password: 6z7NXzsHz5LP6xa
+// cluster-name: myMongoDBCluster
