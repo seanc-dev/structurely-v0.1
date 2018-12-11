@@ -11,89 +11,91 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 // dev data
-cards = {
-        templates: [{
-            id: "paraCard-1",
-            type: 0,
-            row: 1,
-            col: 1,
-            content: {
-                0: "Paragraph or Concept",
-                1:  "Write a simple sentence describing the concept you want to explore"
-            }
-        },
-        {
-            id: "paraPointsCard-1",
-            type: 1,
-            row: 1,
-            col: 2,
-            content: {
-                0: "Additional Points",
-                1: "Add extra details for your paragraph here"
-            }
-        }],
-        dict: [
-            {
-                id: "paraCard-1",
-                type: 0,
-                row: 1,
-                col: 1,
-                content: {
-                    0: "Paragraph or Concept",
-                    1:  "Write a simple sentence describing the concept you want to explore"
-                }
-            },
-            {
-                id: "paraPointsCard-1",
-                type: 1,
-                row: 1,
-                col: 2,
-                content: {
-                    0: "Additional Points",
-                    1: "Add extra details for your paragraph here"
-                }
-            }
-        ]
+components = [{
+        id: "paraCard-1",
+        type: 0,
+        row: 1,
+        col: 1,
+        content: {
+            0: "Paragraph or Concept",
+            1:  "Write a simple sentence describing the concept you want to explore"
+        }
+    },
+    {
+        id: "paraPointsCard-1",
+        type: 1,
+        row: 1,
+        col: 2,
+        content: {
+            0: "Additional Points",
+            1: "Add extra details for your paragraph here"
+        }
+    }]
+
+templates = [{
+    articleId: "",
+    elementId: "paraCard-1",
+    type: 0,
+    row: 1,
+    col: 1,
+    data: {
+        0: "Paragraph or Concept",
+        1:  "Write a simple sentence describing the concept you want to explore"
     }
+},
+{
+    articleId: "",
+    id: "paraPointsCard-1",
+    type: 1,
+    row: 1,
+    col: 2,
+    data: {
+        0: "Additional Points",
+        1: "Add extra details for your paragraph here"
+    }
+}]
 
 // MONGOOSE MODEL CONFIG
-var cardSchema = new mongoose.Schema({
-    id: String,
+
+var articleSchema = new mongoose.Schema({
+    userId: String,
+    title: String,
+    thesis: String,
+    createdDateTime: {
+        type: Date,
+        default: Date.now
+    }
+});
+var Article = mongoose.model("Article", articleSchema);
+
+var componentSchema = new mongoose.Schema({
+    articleId: String,
+    elementId: String,
     type: Number,
     row: Number,
     col: Number,
-    content: {
-        0: String,
-        1: String
-    }
+    createdDateTime: {
+        type: Date,
+        default: Date.now
+    },
+    data: {}
 });
-var Card = mongoose.model("Card", cardSchema);
+var Component = mongoose.model("Component", componentSchema);
 
-// cards.templates.forEach(function(card){
-//     Template.create({
-//         id: card.id,
-//         type: card.type,
-//         row: card.row,
-//         col: card.col,
-//         content: {
-//             0: card.content[0],
-//             1: card.content[1]
-//         }
-//     })
-// });
+// ROUTES
 
 app.get("/", function(req, res){
-    Card.find({}, function(err, cards){
+    Component.find({}, function(err, components){
         if(err){
             console.log(err);
         } else {
-            cards.sort(function(a, b){
+            components.sort(function(a, b){
                 if(a.row-b.row === 0){
                     return a.col-b.col
                 }
                 return a.row-b.row
             });
-            res.render("index", {cards: cards});
+            res.render("index", {components: components});
         }
     })
 });
