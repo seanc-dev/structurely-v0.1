@@ -25,10 +25,13 @@ $(document).ready(function(){
             parentRow = jQueryEl.closest('.top-level-row');
             parentCol = jQueryEl.closest('.top-level-col');
             // append new row if required
+            console.log('this.classList: ', this.classList)
             if(this.classList.contains('btn-add-row')){
                 newRow = cloneEmptyAppendElement(parentRow);
                 newCol = cloneEmptyAppendElement(parentCol, newRow)
             } else {
+                console.log('parentCol: ', parentCol)
+                console.log('parentRow: ', parentRow)
                 newCol = cloneEmptyAppendElement(parentCol, parentRow)
             }
             // insert item - which item? defined by row index in the meantime?
@@ -37,7 +40,7 @@ $(document).ready(function(){
             handlerAddComponent(newCol.children().find('.btn-add-component'));
             handlerRemoveComponent(newCol.children().find('.btn-remove-component, .btn-cancel-remove-component'));
             handlerConfirmRemoveComponent(newCol.children().find('.btn-confirm-remove-component'));
-            // correct all row numbers
+            // correct all row numbers and ids
             setRowDivIds(); // -won't be necessary once db is connected (ID will be db _id)
             // insert data into components collection
             //generateNewRowData(parentRow);
@@ -64,10 +67,10 @@ $(document).ready(function(){
 
     function handlerConfirmRemoveComponent(buttonEl){
         buttonEl.on('click', function(){
-            var deleteRow = this.closest('.top-level-col');
-            deleteRowDataIndex = deleteRow.dataset.index;
+            var deleteCol = this.closest('.top-level-col');
+            deleteColDataIndex = deleteCol.dataset.index;
             //paraCards.cards.splice(deleteRowDataIndex,1);
-            deleteRow.remove();
+            deleteCol.remove();
         });
     };
 

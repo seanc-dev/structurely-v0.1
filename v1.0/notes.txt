@@ -3,3 +3,7 @@
 // user: sean-dev
 // password: 6z7NXzsHz5LP6xa
 // cluster-name: myMongoDBCluster
+
+// DIRECTION:
+// 1. Build out client-side function to point where clickable buttons are working
+// 2. Worry about routing, users, auth etc.

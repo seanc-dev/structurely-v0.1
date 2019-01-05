@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark-grey">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <i class="fas fa-paper-plane mr-2 i-md text-teal"></i>
+            <a class="navbar-brand text-light-grey text-teal" href="/">Structurely</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-0">
+                <% if(!currentUser){ %>
+                <li class="nav-item">
+                    <a class="nav-link text-light-grey" href="/signup">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light-grey" href="/login">Login</a>
+                </li>
+                <% } else { %>
+                <li class="nav-item">
+                    <a class="nav-link text-light-grey" href="#">Logged in as <%= currentUser.username %></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light-grey" href="/logout">Logout</a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>

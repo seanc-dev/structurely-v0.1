@@ -1,103 +1,82 @@
-var bodyParser = require("body-parser"),
-    mongoose = require("mongoose"),
-    express = require("express"),
-    app = express();
-    port = 3000
+// PACKAGES //
+var expressSession      = require("express-session"),
+    LocalStrategy       = require("passport-local"),
+    bodyParser          = require("body-parser"),
+    mongoose            = require("mongoose"),
+    passport            = require("passport"),
+    express             = require("express");
 
-// APP CONFIG
+// MODELS //
+var Article     = require("./models/article"),
+    Card        = require("./models/card"),
+    User        = require("./models/user");
+
+// LOAD DATA //
+var data        = require("./seed.js")
+data.seed();
+
+// SERVER VARIABLES //
+var app         = express();
+    port        = 3000
+
+// APP CONFIG //
 mongoose.connect("mongodb://localhost:27017/structurely", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(express.static("public")); 
 app.set("view engine", "ejs");
 
-// dev data
-components = [{
-        id: "paraCard-1",
-        type: 0,
-        row: 1,
-        col: 1,
-        content: {
-            0: "Paragraph or Concept",
-            1:  "Write a simple sentence describing the concept you want to explore"
-        }
-    },
-    {
-        id: "paraPointsCard-1",
-        type: 1,
-        row: 1,
-        col: 2,
-        content: {
-            0: "Additional Points",
-            1: "Add extra details for your paragraph here"
-        }
-    }]
+// AUTH CONFIG //
+app.use(expressSession({
+    secret: "And yet, everybody rushes around in a great panic as if it were necessary to achieve something beyond themselves.",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
-templates = [{
-    articleId: "",
-    elementId: "paraCard-1",
-    type: 0,
-    row: 1,
-    col: 1,
-    data: {
-        0: "Paragraph or Concept",
-        1:  "Write a simple sentence describing the concept you want to explore"
-    }
-},
-{
-    articleId: "",
-    id: "paraPointsCard-1",
-    type: 1,
-    row: 1,
-    col: 2,
-    data: {
-        0: "Additional Points",
-        1: "Add extra details for your paragraph here"
-    }
-}]
+passport.use(new LocalStrategy(User.authenticate()));
+passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(User.serializeUser());
 
-// MONGOOSE MODEL CONFIG
-
-var articleSchema = new mongoose.Schema({
-    userId: String,
-    title: String,
-    thesis: String,
-    createdDateTime: {
-        type: Date,
-        default: Date.now
-    }
+// CONFIGURE MIDDLEWARE
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next();
 });
-var Article = mongoose.model("Article", articleSchema);
 
-var componentSchema = new mongoose.Schema({
-    articleId: String,
-    elementId: String,
-    type: Number,
-    row: Number,
-    col: Number,
-    createdDateTime: {
-        type: Date,
-        default: Date.now
-    },
-    data: {}
+// ROUTES //
+app.use(require("./routes/articles"));
+// index must be defined last as it contains the * route
+app.use(require("./routes/index"));
+
+// ARTICLE ROUTES
+// index
+app.get("/articles", isLoggedIn, function(req, res){
+    res.render("articles/index");
 });
-var Component = mongoose.model("Component", componentSchema);
 
-// ROUTES
-
-app.get("/", function(req, res){
-    Component.find({}, function(err, components){
+// article plan
+app.get("/articles/:id/", isLoggedIn, function(req, res){
+    Card.find({}, function(err, cards){
         if(err){
             console.log(err);
         } else {
-            components.sort(function(a, b){
+            cards.sort(function(a, b){
                 if(a.row-b.row === 0){
                     return a.col-b.col
                 }
                 return a.row-b.row
             });
-            res.render("index", {components: components});
+            res.render("/articles/index", {cards: cards});
         }
     })
 });
 
-app.listen(port, () => console.log(`Structurely app listening on port ${port}!`))
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
+
+app.listen(port, () => console.log("The engine's running, baby!"));

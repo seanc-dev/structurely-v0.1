@@ -1,0 +1,8 @@
+// BUGS
+// Articles page:
+//  1. Search box does not include search icon. Need to re-work it to include search icon
+//  2. First .article-starter-card. + is not expanding on hover.
+
+
+// IMPROVEMENTS
+//  

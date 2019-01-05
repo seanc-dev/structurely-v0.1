@@ -1,0 +1,35 @@
+<% include partials/header %>
+<div class="container-fluid" style="height: 100%; background: url('images/steve-johnson-548294-unsplash.jpg') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+    <div class="container" style="color: rgb(50,50,50)">
+        <div class="row">
+            <div class="col-5">
+                <div class="jumbotron" style="background-color: rgba(150,150,150,0)">
+                    <% if(errorMessage === "404"){ %>
+                        <h1 class="display-2">404!</h1>
+                        <p class="lead">Page Not Found!</p>
+                        <hr class="my-3">
+                        <p>If you entered the URL manually then double-check your spelling, otherwise try this page again later! If you're certain this page should be working, please let us know by clicking 'Contact Us' below!</p>
+                    <% } else { %>
+                        <h1 class="display-2">Whoops!</h1>
+                        <% if(errorMessage){ %>
+                            <p class="lead">There's been an error! <%= errorMessage %></p>
+                        <% } else { %>
+                            <p class="lead">There's been an unidentified error!</p>
+                        <% } %>
+                        <hr class="my-4">
+                        <p>Please try this page again later! If you're certain this page should be working then please let us know by clicking 'Contact Us' below!</p>
+                    <% } %>
+                    <a class="btn btn-secondary btn-lg" href="javascript:history.back()" role="button">Go Back</a>
+                    <a class="btn btn-secondary btn-lg" href="#" role="button">Contact Us</a>
+                </div>
+            </div>
+        </div>
+        <div class="row align-self-end">
+            <div class="col-1 justify-self-end">
+                <a class="photo-credit fixed-bottom d-flex justify-self-end" style="background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &quot;San Francisco&quot;, &quot;Helvetica Neue&quot;, Helvetica, Ubuntu, Roboto, Noto, &quot;Segoe UI&quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px" href="https://unsplash.com/@steve_j?utm_medium=referral&amp;utm_campaign=photographer-credit&amp;utm_content=creditBadge" target="_blank" rel="noopener noreferrer" title="Download free do whatever you want high-resolution photos from Steve Johnson"><span style="display:inline-block;padding:2px 3px"><svg xmlns="http://www.w3.org/2000/svg" style="height:12px;width:auto;position:relative;vertical-align:middle;top:-2px;fill:white" viewBox="0 0 32 32"><title>unsplash-logo</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg></span><span style="display:inline-block;padding:2px 3px">Steve Johnson</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer %>

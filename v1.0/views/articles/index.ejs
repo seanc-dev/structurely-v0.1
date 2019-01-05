@@ -1,0 +1,86 @@
+<% include ../partials/header %>
+
+<section class="bg-off-white text-dark-grey">
+    <div class="container container-70pc px-0">
+        <div class="row pt-10 px-10">
+            <div class="col-9 py-0 pl-0 pr-1">
+                <input type="text" class="form-control input-focus bg-light-grey text-dark-grey border-none mr-10" placeholder="Have an idea? Save it here!">
+            </div>
+            <div class="col-3 pl-0">
+                <div class="row d-flex ml-3">
+                    <div class="col-2 mr-0 bg-light-grey d-flex">
+                        <i class="fas fa-search align-self-center"></i>
+                    </div>
+                    <div class="col-8 px-0 bg-light-grey mr-3">
+                        <input type="text" class="form-control input-focus bg-light-grey text-dark-grey border-none" placeholder="Search">
+                    </div>
+                    <div class="col-2-px-0 bg-off-white d-flex justify-self-end">
+                        <i class="fas fa-bars text-dark-grey align-self-center i-md"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- article starter row -->
+        <div class="row py-10 justify-content-center">
+            <!-- new article card col -->
+            <div class="col-3 px-0">
+                <div class="stretchy-wrapper ar-16-9">
+                    <div class="card bg-white article-starter-card border-none d-flex align-items-center justify-content-center mx-10 my-10">
+                        <!-- <div class="card-body text-center"> -->
+                            <a class="linky-card d-block"href="/articles/new">
+                                <div class="text-teal i-xl text-center">
+                                    <!-- <p> -->
+                                        +
+                                    <!-- </p> -->
+                                </div>
+                            </a>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+            <!-- article-starters -->
+            <% unupdatedArticles.forEach(function(article){ %>
+                <div class="col-3 px-0">
+                    <div class="stretchy-wrapper ar-16-9">
+                        <div class="card bg-white article-starter-card d-flex align-items-center justify-content-center mx-10 my-10">
+                            <div class="card-body text-center">
+                                <a class="linky-card"href="/articles/<%= article._id %>">
+                                    <p class="unupdated-article-title">
+                                        <b><i>"<%= article.title %>"</i></b>
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<section class="bg-dark-grey">
+    <div class="container">
+        <!-- existing article cards -->
+        <div class="row py-10 justify-content-center">
+            <% updatedArticles.forEach(function(article){ %>
+                <div class="col-3 px-0">
+                    <div class="stretchy-wrapper ar-4-3">
+                        <div class="card bg-white article-in-progress-card mx-10 my-10">
+                            <a class="linky-card text-dark-grey" href="/articles/<%= article._id %>">
+                                <!-- <div class="card-body d-flex align-items-center text-center"> -->
+                                    <img src="<%= article.backgroundImageUrl %>" alt="" class="card-img-top">
+                                    <h5 class="card-title"><%= article.title %></h5>
+                                    <small class="text-muted"><%= article.lastUpdatedDateTime %></small>
+                                <!-- </div> -->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+
+
+<% include ../partials/footer %>

@@ -1,7 +1,15 @@
 var templates = [ // Type of card is implied by position in array
     {
+        id: "zero-component-add",
+        name: "",
+        row: 1,
+        col: 1,
+        data:{},
+        html: '<div class="col-4 d-flex align-items-center"><div id="paraCard-1" class="card app-card card-transparent"><div class="card-body justify-content-center d-flex mt-3"><button class="btn btn-outline-secondary btn-circle-xl btn-add-component"><i class="fa fa-plus"></i></button></div></div></div>'
+    },
+    {
         id: "paraCard-0",
-        name: 0,
+        name: "Paragraph Concept",
         row: 1,
         col: 1,
         data: {
@@ -12,7 +20,7 @@ var templates = [ // Type of card is implied by position in array
     },
     {
         id: "paraPointsCard-0",
-        type: 1,
+        name: "Additional Points",
         row: 1,
         col: 2,
         data: {
@@ -28,7 +36,7 @@ function cloneEmptyAppendElement(elToClone, parent){
     var elClone = elToClone.clone(true);
     elClone.empty();
     if(!parent){
-        siblingOrParent.after(elClone);
+        siblingOrParent.before(elClone);
     } else {
         siblingOrParent.append(elClone);
     }

@@ -1,0 +1,44 @@
+/* body {
+    background: none;
+    background-color: #151618;
+} */
+
+div.card {
+    margin-top: 30%;
+    padding: 5% 10% 10% 10%;
+    background-color: rgb(244,244,244);
+    color: rgb(70,75,80) !important;
+    font-weight: 300 !important;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3), 0 5px 5px 0 rgba(0, 0, 0, 0.3);
+}
+div.card div.card-title {
+    font-size: 2rem;
+}
+
+input.form-control {
+    background-color: rgb(249,249,249);
+    color: rgb(90,98,104);
+    font-weight: 300;
+}
+
+input.form-control.no-bottom {
+    border-bottom-width: 0px;
+}
+
+input.form-control:focus {
+    box-shadow: none;
+    border-color: rgb(150, 150, 150);
+}
+
+button.btn.btn-secondary {
+    font-weight: 300;
+}
+
+a:link {
+    color: #6c757d;
+}
+
+a:focus, a:hover, a:visited {
+    color: #4C5358;
+}
