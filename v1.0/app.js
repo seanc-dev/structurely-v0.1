@@ -13,7 +13,7 @@ var Article     = require("./models/article"),
 
 // LOAD DATA //
 var data        = require("./seed.js")
-data.seed();
+// data.seed();
 
 // SERVER VARIABLES //
 var app         = express();

@@ -95,6 +95,30 @@ data.articles = [
         thesis: "Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​.",
         backgroundImageUrl: "https://images.unsplash.com/photo-1510111652602-195fc654aa83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
         lastUpdatedDateTime: undefined
+    },
+    {
+        title: "Come and see the violence inherent in the system.",
+        thesis: "Help! Help! I'm being repressed!",
+        backgroundImageUrl: "https://images.unsplash.com/photo-1510111652602-195fc654aa83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+        lastUpdatedDateTime: undefined
+    },
+    {
+        title: "What have the Romans ever done for us?",
+        thesis: "All right, but apart from the sanitation, medicine, education, wine, public order, irrigation, roads, the fresh water system and public health..",
+        backgroundImageUrl: "https://images.unsplash.com/photo-1510111652602-195fc654aa83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+        lastUpdatedDateTime: undefined
+    },
+    {
+        title: "Ezekiel 23:17",
+        thesis: "The path of the righteous man is beset on all sides by the iniquities of the selfish, and the tyranny of evil men.",
+        backgroundImageUrl: "https://images.unsplash.com/photo-1510111652602-195fc654aa83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+        lastUpdatedDateTime: undefined
+    },
+    {
+        title: "There was only one Catch",
+        thesis: "And that was Catch-22, which stated that concern for one's own safety in the presence of dangers that are real and immediate is the process of a rational mind.",
+        backgroundImageUrl: "https://images.unsplash.com/photo-1510111652602-195fc654aa83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+        lastUpdatedDateTime: undefined
     }
 ]
 

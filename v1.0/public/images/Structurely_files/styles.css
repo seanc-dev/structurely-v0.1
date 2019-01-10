@@ -16,26 +16,8 @@ body {
     font-weight: 300;
 }
 
-div.article-starter-row.scrollable {
+div.article-starter-row {
 	overflow-x: auto;
-    flex-wrap: nowrap;
-    justify-content: left !important;
-}
-
-@media (max-width: 576px) {
-    div.article-starter-row.scrollable {
-        overflow-x: hidden;
-        justify-content: center !important;
-    }
-  }
-
-div.article-starter-row::-webkit-scrollbar {
-	display: none;
-}
-
-.hover-reduce {
-    transform: scale(0.9);
-    transition: transform ease-in 0.1s;
 }
 
 /* styles for article index page */

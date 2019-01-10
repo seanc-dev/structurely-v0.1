@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://localhost:3000/articles -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Structurely</title>
+        
+        <link rel="stylesheet" href="./Structurely_files/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="./Structurely_files/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" href="./Structurely_files/styles.css">
+    </head>
+    <body cz-shortcut-listen="true">
+        <nav class="navbar navbar-expand-xl navbar-dark bg-dark-grey">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <i class="fas fa-paper-plane mr-2 i-md text-teal"></i>
+            <a class="navbar-brand text-light-grey text-teal" href="http://localhost:3000/">Structurely</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-0">
+                
+                <li class="nav-item">
+                    <a class="nav-link text-light-grey" href="http://localhost:3000/articles#">Logged in as Sean</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light-grey" href="http://localhost:3000/logout">Logout</a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="bg-off-white text-dark-grey">
+    <div class="container container-slim px-0">
+        <div class="row pt-10 px-10">
+            <div class="col-9 py-0 pl-0 pr-1">
+                <form action="http://localhost:3000/articles/new" method="POST">
+                    <input type="text" class="form-control input-focus bg-light-grey text-dark-grey border-none text-sm mr-10" name="article[title]" placeholder="Have an idea? Save it here!">
+                    <input type="text" name="redirect" value="no-redirect" class="d-none">
+                    <input type="submit" class="d-none">
+                </form>
+            </div>
+            <div class="col-3 pl-0">
+                <div class="row d-flex ml-3">
+                    <div class="col-2 mr-0 bg-light-grey d-flex">
+                        <i class="fas fa-search align-self-center"></i>
+                    </div>
+                    <div class="col-8 px-0 bg-light-grey mr-3">
+                        <form action="http://localhost:3000/articles">
+                            <input type="text" class="form-control input-focus bg-light-grey text-dark-grey border-none text-sm" placeholder="Search">
+                            <input type="submit" class="d-none">
+                        </form>
+                    </div>
+                    <div class="col-2-px-0 bg-off-white d-flex justify-self-end">
+                        <i class="fas fa-bars text-dark-grey align-self-center i-md"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- article starter row -->
+        <div class="row pb-10 justify-content-center article-starter-row">
+            <!-- new article card col -->
+            <div id="articleStarterCarousel" class="carousel slide h-100">
+                <div class="carousel-inner">
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 px-0 carousel-item active" style="height: 100px; width: 100px;">
+                        <div class="stretchy-wrapper ar-4-3">
+                            <div class="card i-xl bg-white article-starter-card border-none mx-10 my-10">
+                                <a class="linky-card d-flex align-items-center justify-content-center" href="http://localhost:3000/articles/new">
+                                    <div class="text-teal text-center p-2 pb-4">
+                                        +
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- article-starters -->
+                    
+                    <div class="d-none d-sm-flex col-sm-6 col-md-4 col-xl-3 px-0 carousel-item">
+                        <div class="stretchy-wrapper ar-4-3">
+                            <div class="card bg-white article-starter-card border-none mx-10 my-10">
+                                <a class="linky-card d-flex align-items-center justify-content-center" href="http://localhost:3000/articles/5c36cc7499c7bd1e9570659a" <="" a="">
+                                    <div class="text-dark-grey text-center p-2">
+                                        <i>"The Mechanics of Power"</i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-none d-sm-flex col-sm-6 col-md-4 col-xl-3 px-0 carousel-item">
+                        <div class="stretchy-wrapper ar-4-3">
+                            <div class="card bg-white article-starter-card border-none mx-10 my-10">
+                                <a class="linky-card d-flex align-items-center justify-content-center" href="http://localhost:3000/articles/5c36cc7499c7bd1e9570659b" <="" a="">
+                                    <div class="text-dark-grey text-center p-2">
+                                        <i>"Lessons From Burning Man"</i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-none d-sm-flex col-sm-6 col-md-4 col-xl-3 px-0 carousel-item">
+                        <div class="stretchy-wrapper ar-4-3">
+                            <div class="card bg-white article-starter-card border-none mx-10 my-10">
+                                <a class="linky-card d-flex align-items-center justify-content-center" href="http://localhost:3000/articles/5c36cc7499c7bd1e9570659c" <="" a="">
+                                    <div class="text-dark-grey text-center p-2">
+                                        <i>"Zombie ipsum reversus ab viral inferno, nam rick..."</i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-dark-grey">
+    <div class="container container-slim px-0">
+        <div class="row pt-10 px-10">
+            <div class="col-9 pl-1">
+                Recent articles
+            </div>
+            <div class="col-3 pl-0 pr-1">
+                <div class="d-flex justify-content-end align-items-center">
+                    <span>Owned by anyone</span>
+                    <i class="fas fa-chevron-down i-sm pl-1"></i>
+                    <i class="fas fa-sort i-sm pl-3 pr-0"></i>
+                </div>
+            </div>
+        </div>
+        <!-- existing article cards -->
+        <div class="row pb-10 justify-content-center">
+            
+                <div class="col-12 col-sm-6 col-md-4 col-xl-3 px-0">
+                    <div class="stretchy-wrapper ar-1-1">
+                        <div class="card bg-white article-in-progress-card mx-10 my-10">
+                            <a class="linky-card text-dark-grey" href="http://localhost:3000/articles/5c36cc7499c7bd1e95706596">
+                                <div class="stretchy-wrapper ar-3-2">
+                                        <div class="img" style="background-image: url(&#39;https://images.unsplash.com/photo-1502790671504-542ad42d5189?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1500&amp;q=80&#39;)">
+                                        <!-- <img src="https://images.unsplash.com/photo-1502790671504-542ad42d5189?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1500&amp;q=80" alt="" class="card-img-top article-in-progress-img"> -->
+                                    </div>
+                                </div>
+                                <!-- <div class="card-body"> -->
+                                    <div class="card-subtitle px-10 py-10">
+                                        <p class="mb-0">
+                                            The Mechanics of Power
+                                        </p>
+                                        <small class="text-muted">
+                                            <i class="fas fa-paper-plane"></i> 
+                                            
+                                            
+                                                2:04pm Dec 25th 2018
+                                            
+                                            
+                                        </small>
+                                    </div>
+                                <!-- </div> -->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-12 col-sm-6 col-md-4 col-xl-3 px-0">
+                    <div class="stretchy-wrapper ar-1-1">
+                        <div class="card bg-white article-in-progress-card mx-10 my-10">
+                            <a class="linky-card text-dark-grey" href="http://localhost:3000/articles/5c36cc7499c7bd1e95706597">
+                                <div class="stretchy-wrapper ar-3-2">
+                                        <div class="img" style="background-image: url(&#39;https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1440&amp;q=80&#39;)">
+                                        <!-- <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1440&amp;q=80" alt="" class="card-img-top article-in-progress-img"> -->
+                                    </div>
+                                </div>
+                                <!-- <div class="card-body"> -->
+                                    <div class="card-subtitle px-10 py-10">
+                                        <p class="mb-0">
+                                            Lessons From Burning M...
+                                        </p>
+                                        <small class="text-muted">
+                                            <i class="fas fa-paper-plane"></i> 
+                                            
+                                            
+                                                2:04pm Dec 25th 2018
+                                            
+                                            
+                                        </small>
+                                    </div>
+                                <!-- </div> -->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-12 col-sm-6 col-md-4 col-xl-3 px-0">
+                    <div class="stretchy-wrapper ar-1-1">
+                        <div class="card bg-white article-in-progress-card mx-10 my-10">
+                            <a class="linky-card text-dark-grey" href="http://localhost:3000/articles/5c36cc7499c7bd1e95706598">
+                                <div class="stretchy-wrapper ar-3-2">
+                                        <div class="img" style="background-image: url(&#39;https://images.unsplash.com/photo-1502790671504-542ad42d5189?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1500&amp;q=80&#39;)">
+                                        <!-- <img src="https://images.unsplash.com/photo-1502790671504-542ad42d5189?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1500&amp;q=80" alt="" class="card-img-top article-in-progress-img"> -->
+                                    </div>
+                                </div>
+                                <!-- <div class="card-body"> -->
+                                    <div class="card-subtitle px-10 py-10">
+                                        <p class="mb-0">
+                                            The Mechanics of Power
+                                        </p>
+                                        <small class="text-muted">
+                                            <i class="fas fa-paper-plane"></i> 
+                                            
+                                            
+                                                11:17am Jan 2nd 2019
+                                            
+                                            
+                                        </small>
+                                    </div>
+                                <!-- </div> -->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-12 col-sm-6 col-md-4 col-xl-3 px-0">
+                    <div class="stretchy-wrapper ar-1-1">
+                        <div class="card bg-white article-in-progress-card mx-10 my-10">
+                            <a class="linky-card text-dark-grey" href="http://localhost:3000/articles/5c36cc7499c7bd1e95706599">
+                                <div class="stretchy-wrapper ar-3-2">
+                                        <div class="img" style="background-image: url(&#39;https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1440&amp;q=80&#39;)">
+                                        <!-- <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1440&amp;q=80" alt="" class="card-img-top article-in-progress-img"> -->
+                                    </div>
+                                </div>
+                                <!-- <div class="card-body"> -->
+                                    <div class="card-subtitle px-10 py-10">
+                                        <p class="mb-0">
+                                            Lessons From Burning M...
+                                        </p>
+                                        <small class="text-muted">
+                                            <i class="fas fa-paper-plane"></i> 
+                                            
+                                            
+                                                5 days ago
+                                            
+                                            
+                                        </small>
+                                    </div>
+                                <!-- </div> -->
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+<script src="./Structurely_files/moment-with-locales.js"></script>
+
+<script src="./Structurely_files/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="./Structurely_files/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="./Structurely_files/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script>
+    if (typeof jQuery == 'undefined') {
+        document.write(unescape("%3Cscript src='js/jquery-2.0.0.min.js' type='text/javascript'%3E%3C/script%3E"));
+        document.write(unescape("%3Cscript src='bootstrap/bootstrap.bundle.min.js' type='text/javascript'%3E%3C/script%3E"));
+        document.write(unescape("%3Clink rel='stylesheet' href='bootstrap/bootstrap.full.css'%3E%3C/script%3E"));
+    }
+</script>
+<script src="./Structurely_files/index.js"></script>
+
+</body></html>

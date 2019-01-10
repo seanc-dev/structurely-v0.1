@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+    
+
     var firstRow = $('#row-1');
     var initialAddParaButton = firstRow.find('#btnAddPara-1');
     var initialRemoveParaButton = firstRow.find('#btnRemovePara-1');
@@ -9,6 +12,8 @@ $(document).ready(function(){
     var initialEditableAreas = $('.editable');
 
     function init() {
+
+        alert('connected')
         // add event handlers
         paraAddHandler(initialAddParaButton);
         paraRemoveHandler(initialRemoveParaButton);
