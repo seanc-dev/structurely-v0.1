@@ -1,10 +1,14 @@
 <% include ../partials/header %>
 
 <section class="bg-off-white text-dark-grey">
-    <div class="container container-70pc px-0">
+    <div class="container container-slim px-0">
         <div class="row pt-10 px-10">
             <div class="col-9 py-0 pl-0 pr-1">
-                <input type="text" class="form-control input-focus bg-light-grey text-dark-grey border-none mr-10" placeholder="Have an idea? Save it here!">
+                <form action="/articles/new" method="POST">
+                    <input type="text" class="form-control input-focus bg-light-grey text-dark-grey border-none text-sm mr-10" name="article[title]" placeholder="Have an idea? Save it here!">
+                    <input type="text" name="redirect" value="no-redirect" class="d-none">
+                    <input type="submit" class="d-none">
+                </form>
             </div>
             <div class="col-3 pl-0">
                 <div class="row d-flex ml-3">
@@ -12,7 +16,10 @@
                         <i class="fas fa-search align-self-center"></i>
                     </div>
                     <div class="col-8 px-0 bg-light-grey mr-3">
-                        <input type="text" class="form-control input-focus bg-light-grey text-dark-grey border-none" placeholder="Search">
+                        <form action="">
+                            <input type="text" class="form-control input-focus bg-light-grey text-dark-grey border-none text-sm" placeholder="Search">
+                            <input type="submit" class="d-none">
+                        </form>
                     </div>
                     <div class="col-2-px-0 bg-off-white d-flex justify-self-end">
                         <i class="fas fa-bars text-dark-grey align-self-center i-md"></i>
@@ -20,57 +27,85 @@
                 </div>
             </div>
         </div>
+
         <!-- article starter row -->
-        <div class="row py-10 justify-content-center">
+        <div class="row pb-10 justify-content-center article-starter-row">
             <!-- new article card col -->
-            <div class="col-3 px-0">
-                <div class="stretchy-wrapper ar-16-9">
-                    <div class="card bg-white article-starter-card border-none d-flex align-items-center justify-content-center mx-10 my-10">
-                        <!-- <div class="card-body text-center"> -->
-                            <a class="linky-card d-block"href="/articles/new">
-                                <div class="text-teal i-xl text-center">
-                                    <!-- <p> -->
-                                        +
-                                    <!-- </p> -->
-                                </div>
-                            </a>
-                        <!-- </div> -->
+            <div class="col-12 col-sm-6 col-md-4 col-xl-3 px-0">
+                <div class="stretchy-wrapper ar-4-3">
+                    <div class="card i-xl bg-white article-starter-card border-none mx-10 my-10">
+                        <a class="linky-card d-flex align-items-center justify-content-center"href="/articles/new">
+                            <div class="text-teal text-center p-2 pb-4">
+                                +
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
             <!-- article-starters -->
             <% unupdatedArticles.forEach(function(article){ %>
-                <div class="col-3 px-0">
-                    <div class="stretchy-wrapper ar-16-9">
-                        <div class="card bg-white article-starter-card d-flex align-items-center justify-content-center mx-10 my-10">
-                            <div class="card-body text-center">
-                                <a class="linky-card"href="/articles/<%= article._id %>">
-                                    <p class="unupdated-article-title">
-                                        <b><i>"<%= article.title %>"</i></b>
-                                    </p>
-                                </a>
+            <div class="d-none d-sm-flex col-sm-6 col-md-4 col-xl-3 px-0">
+                <div class="stretchy-wrapper ar-4-3">
+                    <div class="card bg-white article-starter-card border-none mx-10 my-10">
+                        <a class="linky-card d-flex align-items-center justify-content-center"href="/articles/<%= article._id %>"</a>
+                            <div class="text-dark-grey text-center p-2">
+                                <i>"<%= article.title %>"</i>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
+            </div>
             <% }) %>
         </div>
     </div>
 </section>
 
 <section class="bg-dark-grey">
-    <div class="container">
+    <div class="container container-slim px-0">
+        <div class="row pt-10 px-10">
+            <div class="col-9 pl-1">
+                Recent articles
+            </div>
+            <div class="col-3 pl-0 pr-1">
+                <div class="d-flex justify-content-end align-items-center">
+                    <span>Owned by anyone</span>
+                    <i class="fas fa-chevron-down i-sm pl-1"></i>
+                    <i class="fas fa-sort i-sm pl-3 pr-0"></i>
+                </div>
+            </div>
+        </div>
         <!-- existing article cards -->
-        <div class="row py-10 justify-content-center">
+        <div class="row pb-10 justify-content-center">
             <% updatedArticles.forEach(function(article){ %>
-                <div class="col-3 px-0">
-                    <div class="stretchy-wrapper ar-4-3">
+                <div class="col-12 col-sm-6 col-md-4 col-xl-3 px-0">
+                    <div class="stretchy-wrapper ar-1-1">
                         <div class="card bg-white article-in-progress-card mx-10 my-10">
                             <a class="linky-card text-dark-grey" href="/articles/<%= article._id %>">
-                                <!-- <div class="card-body d-flex align-items-center text-center"> -->
-                                    <img src="<%= article.backgroundImageUrl %>" alt="" class="card-img-top">
-                                    <h5 class="card-title"><%= article.title %></h5>
-                                    <small class="text-muted"><%= article.lastUpdatedDateTime %></small>
+                                <div class="stretchy-wrapper ar-3-2">
+                                        <div class="img" style="background-image: url('<%= article.backgroundImageUrl %>')">
+                                        <!-- <img src="<%= article.backgroundImageUrl %>" alt="" class="card-img-top article-in-progress-img"> -->
+                                    </div>
+                                </div>
+                                <!-- <div class="card-body"> -->
+                                    <div class="card-subtitle px-10 py-10">
+                                        <p class="mb-0">
+                                            <%= article.title %>
+                                        </p>
+                                        <small class="text-muted">
+                                            <i class="fas fa-paper-plane"></i> 
+                                            
+                                            <% if(moment(article.lastUpdatedDateTime) > moment().startOf('hour')){ %>
+                                                <%= moment().startOf('hour').fromNow() %>
+                                            <% } else if(moment(article.lastUpdatedDateTime) > moment().startOf('day')) { %>
+                                                <%= moment().startOf('day').fromNow() %>
+                                            <% } else if(moment(article.lastUpdatedDateTime) > moment().startOf('week')){ %>
+                                                <%= moment().startOf('week').fromNow() %>
+                                            <% } else { %>
+                                                <%= moment(article.lastUpdatedDateTime).format('h:mma MMM Do YYYY') %>
+                                            <% } %>
+                                            
+                                        </small>
+                                    </div>
                                 <!-- </div> -->
                             </a>
                         </div>
@@ -80,7 +115,8 @@
         </div>
     </div>
 </section>
-
+<script src="js/moment-with-locales.js"></script>
+<script src="js/articles/index.js"></script>
 
 
 <% include ../partials/footer %>

@@ -31,7 +31,7 @@ router.post("/signup", function(req, res){
             res.redirect("/signup");
         } else {
             passport.authenticate("local")(req, res, function(){
-                // this code seeds 2x articles (defined in seed.js/data.articles) to each newly created user
+                // this code seeds the articles defined in seed.js/data.articles to each newly created user
                 Article.find({}, function(err, foundArticles){
                     if(err){
                         console.log("Error, find article in /signup POST route");

@@ -1,8 +1,20 @@
 // BUGS
-// Articles page:
+// Articles show page:
 //  1. Search box does not include search icon. Need to re-work it to include search icon
 //  2. First .article-starter-card. + is not expanding on hover.
 
 
 // IMPROVEMENTS
-//  
+
+// Data model
+//  1. Make articles share-able
+
+// Articles show page:
+//  1. Wire up search functionality
+//  2. Move search into the navbar. Will require separate header files
+//  3. Wire-up sort-able sections and 'owned-by' drop-down
+//  4. Sort out templates carousel/limit-and-expand
+
+// BEFORE GOING LIVE
+// Routing
+//  1. Replace 'isLoggedIn' middleware in all routes

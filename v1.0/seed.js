@@ -70,13 +70,13 @@ data.articles = [
         title: "The Mechanics of Power",
         thesis: "Why is it that every system of social organisation humans have ever built has eventually become corrupt?",
         backgroundImageUrl: "https://images.unsplash.com/photo-1502790671504-542ad42d5189?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
-        lastUpdatedDateTime: 1545699857638
+        lastUpdatedDateTime: 1546381052298
     },
     {
         title: "Lessons From Burning Man",
         thesis: "What can mainstream society learn from Burning Man, a self-styled 'Experiment in Temporary Community'?",
         backgroundImageUrl: "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1440&q=80",
-        lastUpdatedDateTime: 1545699884700
+        lastUpdatedDateTime: 1546812870546
     },
     {
         title: "The Mechanics of Power",

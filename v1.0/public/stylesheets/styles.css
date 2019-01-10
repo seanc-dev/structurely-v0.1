@@ -16,10 +16,14 @@ body {
     font-weight: 300;
 }
 
+div.article-starter-row {
+	overflow-x: auto;
+}
+
+/* styles for article index page */
 div.article-starter-card {
     border: 1px solid #E0E0E0 !important;
-    /* border: 1px solid #6c757d; */
-    /* background-color: #45818E; */
+    line-height: 1.4;
 }
 
 div.article-starter-card:hover {
@@ -29,38 +33,39 @@ div.article-starter-card:hover {
 }
 
 div.article-in-progress-card {
-    border: 1px solid #E0E0E0 !important;
-    /* border: 1px solid #6c757d; */
-    /* background-color: #45818E; */
+    border: 2px solid #333A40 !important;
+    /* width: 226.55px; */
 }
 
 div.article-in-progress-card:hover {
     border: 2px solid #45818E !important;
-    font-size: 112.5% !important;
+    /* font-size: 112.5% !important; */
     transition: border 0.1s linear !important;
 }
 
 a.linky-card,
 a.linky-card:hover,
+a.linky-card:active,
+a.linky-card:visited,
 a.linky-card:focus,
 a.linky-card:link {
-    display: flex;
+    /* display: block; */
     width: 100%;
     height: 100%;
     color: none !important;
     text-decoration: none !important;
 }
 
-.i-xl {
-    font-size: 6rem;
-    margin-bottom: 0;
-    height: 100%;
-    width: 100%;
-    vertical-align: middle;
+div.card-subtitle small.text-muted {
+    padding-top: -0.5rem;
 }
 
-.i-xl:hover {
-    font-size: 7rem;
+div.card-subtitle {
+    line-height: 1.2;
+}
+
+.i-xl {
+    font-size: 5.75rem;
 }
 
 i.fas.fa-search {
@@ -72,9 +77,98 @@ i.i-md {
     font-size: 1.5rem
 }
 
-div.container.container-70pc {
-    width: 70%;
+i.i-sm {
+    font-size: 1.25rem;
 }
+
+div.stretchy-wrapper > div {
+	position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+}
+
+div.stretchy-wrapper.ar-3-2 {
+	width: 100%;
+	padding-bottom: 66.66%; /* 3:2 */
+    position: relative;
+}
+
+div.stretchy-wrapper.ar-4-3 {
+	width: 100%;
+	padding-bottom: 75%; /* 4:3 */
+    position: relative;
+}
+
+div.stretchy-wrapper.ar-1-1 {
+	width: 100%;
+	padding-bottom: 90%; /* 1:1 */
+    position: relative;
+}
+
+div.stretchy-wrapper div.img {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.card-img-top.article-in-progress-img {
+    object-fit: fill !important;
+    width: 100%;
+    height: 100%;
+}
+
+.text-sm::placeholder {
+    font-size: .9rem;
+}
+
+.input-focus:focus {
+    border: 1px solid #E0E0E0 !important; 
+    background-color: #ffffff !important;
+    color: #333A40;
+    /* border-color: #E0E0E0 !important; */
+    outline: 0;
+    box-shadow: 0.05rem 0.05rem 0.05rem 0.1rem  rgba(224, 224, 224, 0.5) !important;
+    transition: box-shadow 0.1s linear;
+}
+
+div.container.container-slim {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media (max-width: 576px) {
+    div.container.container-slim {
+      max-width: 300px;
+    }
+  }
+  
+  @media (min-width: 576px) {
+    div.container.container-slim {
+      max-width: 520px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    div.container.container-slim {
+      max-width: 700px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    div.container.container-slim {
+      max-width: 800px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    div.container.container-slim {
+      max-width: 950px;
+    }
+  }
 
 section.jumbotron {
 	background-color: rgba(255,255,255,0);
@@ -99,12 +193,12 @@ div.app-col {
 	background: rgba(128,128,128,0.5);
 }
 
-div.card {
-    /* background-color: ivory; */
-    /* background-color: #fff; */
+/* div.card {
+    background-color: ivory;
+    background-color: #fff;
 	opacity: 0.8;
-	/* border-radius: 0rem; */
-}
+	border-radius: 0rem;
+} */
 
 div.card-transparent {
 	background-color: rgba(255,255,240,0);
@@ -163,33 +257,6 @@ button.btn.btn-sm.btn-point-add {
 
 .nav-link.text-light-grey:hover {
     color: #ffffff !important;
-}
-
-div.stretchy-wrapper > div {
-	position: absolute;
-    top: 0; bottom: 0; left: 0; right: 0;
-}
-
-div.stretchy-wrapper.ar-16-9 {
-	width: 100%;
-	padding-bottom: 66.66%; /* 16:9 */
-    position: relative;
-}
-
-div.stretchy-wrapper.ar-4-3 {
-	width: 100%;
-	padding-bottom: 85%; /* 4:3 */
-    position: relative;
-}
-
-.input-focus:focus {
-    border: 1px solid #E0E0E0 !important; 
-    background-color: #ffffff !important;
-    color: #333A40;
-    /* border-color: #E0E0E0 !important; */
-    outline: 0;
-    box-shadow: 0.05rem 0.05rem 0.05rem 0.1rem  rgba(224, 224, 224, 0.5) !important;
-    transition: box-shadow 0.1s linear;
 }
 
 .border-none {
