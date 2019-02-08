@@ -21,8 +21,9 @@ var app         = express();
 
 // APP CONFIG //
 mongoose.connect("mongodb://localhost:27017/structurely", {useNewUrlParser: true});
+// app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({extended : true}));
-app.use(express.static("public")); 
+app.use(express.static(__dirname + '/public/'));
 app.set("view engine", "ejs");
 
 // AUTH CONFIG //
@@ -48,29 +49,6 @@ app.use(function(req, res, next){
 app.use(require("./routes/articles"));
 // index must be defined last as it contains the * route
 app.use(require("./routes/index"));
-
-// ARTICLE ROUTES
-// index
-app.get("/articles", isLoggedIn, function(req, res){
-    res.render("articles/index");
-});
-
-// article plan
-app.get("/articles/:id/", isLoggedIn, function(req, res){
-    Card.find({}, function(err, cards){
-        if(err){
-            console.log(err);
-        } else {
-            cards.sort(function(a, b){
-                if(a.row-b.row === 0){
-                    return a.col-b.col
-                }
-                return a.row-b.row
-            });
-            res.render("/articles/index", {cards: cards});
-        }
-    })
-});
 
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){

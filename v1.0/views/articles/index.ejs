@@ -1,4 +1,6 @@
 <% include ../partials/header %>
+<% include ../partials/articles/header-index-end.ejs %>
+<% include ../partials/navbar-main.ejs %>
 
 <section class="bg-off-white text-dark-grey">
     <div class="container container-slim px-0">
@@ -83,7 +85,6 @@
                             <a class="linky-card text-dark-grey" href="/articles/<%= article._id %>">
                                 <div class="stretchy-wrapper ar-3-2">
                                         <div class="img" style="background-image: url('<%= article.backgroundImageUrl %>')">
-                                        <!-- <img src="<%= article.backgroundImageUrl %>" alt="" class="card-img-top article-in-progress-img"> -->
                                     </div>
                                 </div>
                                 <!-- <div class="card-body"> -->
@@ -93,7 +94,7 @@
                                         </p>
                                         <small class="text-muted">
                                             <i class="fas fa-paper-plane"></i> 
-                                            
+                                             Opened 
                                             <% if(moment(article.lastUpdatedDateTime) > moment().startOf('hour')){ %>
                                                 <%= moment().startOf('hour').fromNow() %>
                                             <% } else if(moment(article.lastUpdatedDateTime) > moment().startOf('day')) { %>
@@ -101,7 +102,7 @@
                                             <% } else if(moment(article.lastUpdatedDateTime) > moment().startOf('week')){ %>
                                                 <%= moment().startOf('week').fromNow() %>
                                             <% } else { %>
-                                                <%= moment(article.lastUpdatedDateTime).format('h:mma MMM Do YYYY') %>
+                                                <%= moment(article.lastUpdatedDateTime).format('h:mma MMM D, YYYY') %>
                                             <% } %>
                                             
                                         </small>

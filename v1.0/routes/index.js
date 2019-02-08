@@ -73,12 +73,12 @@ router.get("/logout", function(req, res){
 
 // error page
 router.get("/error", function(req, res){
-    res.render("error");
+    res.render("error-page");
 })
 
 // all other routes
-router.get("*", function(req, res){
-    res.render("error", {errorMessage: "404"});
-})
+// router.get("*", function(req, res){
+//     res.render("error-page", {errorMessage: "404 - page not found"});
+// })
 
 module.exports = router;

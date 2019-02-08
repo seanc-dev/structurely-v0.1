@@ -1,118 +1,61 @@
 $(document).ready(function(){
-    var firstRow = $('.top-level-row');
-    var initialAddComponentButton = firstRow.find('.btn-add-component');
-    var initialRemoveComponentButton = firstRow.find('.btn-remove-component');
-    var initialCancelRemoveParaButton = firstRow.find('.btn-cancel-remove-component');
-    var initialConfirmRemoveParaButton = firstRow.find('.btn-confirm-remove-component');
-    var initialLiAddButton = firstRow.find('#btnPointAdd-1');
-    var initialEditableAreas = firstRow.find('.editable');
+    var appTabs = $('.app-tab'),
+        // colAddButton = $('.col-add-button')
+        cardAddButton = $('.col-add-button')
 
     function init() {
-        // add event handlers
-        handlerAddComponent(initialAddComponentButton);
-        handlerRemoveComponent(initialRemoveComponentButton);
-        handlerRemoveComponent(initialCancelRemoveParaButton);
-        handlerConfirmRemoveComponent(initialConfirmRemoveParaButton);
-        handlerAddLi(initialLiAddButton);
-        editableAreaHandler(initialEditableAreas);
+        // add event handler
+        handlerAppTab(appTabs);
+        handlerColAddButton(cardAddButton);
         // populate cards and content
         //loadData();
-    };
 
-    function handlerAddComponent(buttonEl){
-        buttonEl.on('click', function(){
-            jQueryEl = $(this);
-            parentRow = jQueryEl.closest('.top-level-row');
-            parentCol = jQueryEl.closest('.top-level-col');
-            // append new row if required
-            console.log('this.classList: ', this.classList)
-            if(this.classList.contains('btn-add-row')){
-                newRow = cloneEmptyAppendElement(parentRow);
-                newCol = cloneEmptyAppendElement(parentCol, newRow)
-            } else {
-                console.log('parentCol: ', parentCol)
-                console.log('parentRow: ', parentRow)
-                newCol = cloneEmptyAppendElement(parentCol, parentRow)
-            }
-            // insert item - which item? defined by row index in the meantime?
-            newCol.html(templates[newCol[0].dataset.index].html);
-            // add handlers to item
-            handlerAddComponent(newCol.children().find('.btn-add-component'));
-            handlerRemoveComponent(newCol.children().find('.btn-remove-component, .btn-cancel-remove-component'));
-            handlerConfirmRemoveComponent(newCol.children().find('.btn-confirm-remove-component'));
-            // correct all row numbers and ids
-            setRowDivIds(); // -won't be necessary once db is connected (ID will be db _id)
-            // insert data into components collection
-            //generateNewRowData(parentRow);
-            // update contents of new para to template
-            //populateData(newRow, newRow[0].dataset.index);
+    }
+
+    function handlerColAddButton(clickedButton){
+        clickedButton.on('click', function(el){
+            // insert new card component before column housing this element
+            // keyword 'standard' is hard-coded here, but will be dynamic once card menu is functional
+            insertCard($(this).closest('.col-add-button'), 'standard');
+            // call column insert formula with keyword
+            // call formula to set new column as active and remove from all others
+            return false;
         });
-    };
+    }
 
-    function handlerRemoveComponent(buttonEl){
-        buttonEl.on('click', function(){
-            console.log('Remove Handler Connected');
-            // find and hide row with button
-            var hideRow = this.closest('.flex-row');
-            toggleClassesUponTest(hideRow, true, ['d-flex', 'd-none'])
-            // find and reveal the Confirm/Cancel button row
-            if(this.classList.contains('btn-remove-component')){
-                var revealButtonRow = this.closest('.flex-row').nextElementSibling
-            } else {
-                var revealButtonRow = this.closest('.flex-row').previousElementSibling
-            }
-            toggleClassesUponTest(revealButtonRow, true, ['d-flex', 'd-none'])
-        })
-    };
-
-    function handlerConfirmRemoveComponent(buttonEl){
-        buttonEl.on('click', function(){
-            var deleteCol = this.closest('.top-level-col');
-            deleteColDataIndex = deleteCol.dataset.index;
-            //paraCards.cards.splice(deleteRowDataIndex,1);
-            deleteCol.remove();
+    function handlerAppTab(tabElementArr){
+        console.log('tabElementArr: ', tabElementArr)
+        tabElementArr.each(function(i, tabEl){
+            console.log('tabEl: ', tabEl)
+            $(this).on('click', function(tabEl){
+                if(!$(this).hasClass('active')){
+                    tabElementArr.each(function(i,tabElForToggle){
+                        tabElForToggle.classList.toggle('active');
+                    });
+                }
+            });
         });
-    };
+    }
 
-    function handlerAddLi(buttonEl){
-        buttonEl.on('click', function(){
-            console.log(this);
-            var pointsListItem = $(this).closest('.card-body').find('.para-points-li')
-            var newPointsListItem = '<li class="para-points-li">'
-            + '<span class="para-points-text d-block" contenteditable="true">Add extra details for your paragraph here</span>'
-            + '</li>'
-            console.log('newPointsListItem: ', newPointsListItem)
-            newPointsListItem = pointsListItem.clone(true)[0]
-
-            // NEED FUNCTION TO CONVERT TEXT TO HTML AND APPEND AFTER ELEMENT
-
-            pointsListItem.after(newPointsListItem);
-            console.log('pointsListItem: ', pointsListItem)
-        });
-    };
-
-    function editableAreaHandler(arr){
-        console.log(arr)
-        arr.on('blur', function(){
-            console.log('editable handler connected')
-            //saveData(el.closest('.top-level-row'))
-        });
-    };
-
-    // function loadData(){
-    //     // loop through paraCards object to generate rows and cards as req'd
-    //     for(var i=0; i<paraCards.cards.length; i++){
-    //         // append new row into app-body if required
-    //         if(i>0){
-    //             newRow = appendNewRow(initialAddParaButton);
-    //         } else {
-    //             newRow = $('#row-1');
-    //         }
-    //         // populate saved data into app
-    //         populateData(newRow, i);
-    //     };
-    // };
+    function insertCard(target, contentKey){
+        // insert html
+        var insertedEl = target.before(cards[contentKey].html);
+        console.log(insertedEl);
+        // populate text
+        populateCardText(insertedEl, cards[contentKey]);
+        // set new card as active
+    }
     
+    function populateCardText(card, content){
+        // populate title
+        card.find('.' + content.title.key).text(content.title.text);
+        // populate body
+        console.log(content.body);
+        content.body.content.forEach(function(bodyItem){
+            card.find('.' + bodyItem.key).text(bodyItem.text);
+        });
+    }
+
     init();
 
 });

@@ -1,0 +1,72 @@
+<% include ../partials/header %>
+
+<section id="header" class="jumbotron text-center pt-4 pb-3 mb-0">
+    <h3 class="display-3">Structurely</h3>
+    <p class="lead">A Simple Tool for Structured Writing</p>
+    <p>Add paragraphs and expand on them below</p>
+</section>
+
+<div class="container thesis-container">
+    <div id="thesisRow" class="d-flex flex-row justify-content-center align-items-center text-center">
+        <div class="col-8">
+            <div id="thesisAccordion" class="accordion">
+                <div class="card mb-2 align-items-center">
+                    <div class="card-body">
+                        <h5 id="thesisHeader" class="card-title mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#thesisCollapse" aria-expanded="false" aria-controls="thesisCollapse">
+                                Central Question or Thesis
+                            </button>
+                        </h5>
+                        <div id="thesisCollapse" class="collapse" aria-labelledby="thesisHeader" data-parent="#thesisAccordion" contenteditable="true">
+                            <p class="card-text lead mt-0 mb-1 editable">This is the central question I seek to answer in this piece, or the central thesis for which I am arguing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container app-body">
+    <div id="row-1" class="d-flex flex-row justify-content-left top-level-row" data-index="0">
+        <div class="app-col top-level-col col-4 d-flex align-items-center" data-index="0">
+            <div id="paraCard-1" class="card app-card">
+                <div class="card-body">
+                    <div class="d-flex flex-row justify-content-between align-items-center">
+                        <h5 id="paraCardTitle-1" class="card-title para-card-header mb-0 editable" contenteditable="true">Paragraph or Concept</h5>
+                        <!-- <button type="button" id="btnAddCol-1" class="btn btn-outline-success btn-sm btn-add-component"><i class="fas fa-plus"></i></i></button> -->
+                    </div>
+                    <p id="paraCardBody-1" class="card-text para-card-body editable" contenteditable="true">Write a simple sentence describing the concept you want to explore</p>
+                    <div class="d-flex flex-row justify-content-center">
+                        <!-- <button type="button" id="btnAddRow-1" class="btn btn-outline-success btn-sm px-2 btn-add-component btn-add-row"><i class="fas fa-plus"></i></button> -->
+                        <button type="button" id="btnRemovePara-1" class="btn btn-outline-secondary btn-sm px-2 btn-remove-component" data-toggle-child="1"><i class="fas fa-minus"></i></button>
+                    </div>
+                    <div class="flex-row justify-content-center d-none">
+                        <button type="button" id="btnRemoveParaConfirm-1" class="btn btn-outline-danger btn-sm px-2 btn-confirm-remove-component">Confirm Deletion</button>
+                        <button type="button" id="btnRemoveParaCancel-1" class="btn btn-outline-success btn-sm px-2 btn-cancel-remove-component">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="top-level-col col-4  d-flex align-items-center" data-index="0">
+            <div id="paraCard-1" class="card app-card card-transparent justify-content-center">
+                <div class="card-body align-items-center d-flex ml-3">
+                    <button class="btn btn-outline-secondary btn-circle-xl btn-add-component"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="row-2" class="d-flex flex-row justify-content-left align-items-center top-level-row" data-index="1">
+        <div class="col-4 d-flex align-items-center" data-index="0">
+            <div id="paraCard-1" class="card app-card card-transparent">
+                <div class="card-body justify-content-center d-flex mt-3">
+                    <button class="btn btn-outline-secondary btn-circle-xl btn-add-component"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/articles/data.js"></script>	
+<script src="js/articles/components.js"></script>	
+<script src="js/articles/load.js"></script>
+
+<% include ../partials/footer %>

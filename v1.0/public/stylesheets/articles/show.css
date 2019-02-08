@@ -1,0 +1,117 @@
+html,body {
+    height:100%;
+    width: 100%;
+    background-color: #E0E0E0
+}
+
+div#tabRow div.card {
+    border-right: none;
+    border-left: none;
+    /* background-color: purple; */
+}
+
+#appBody {
+    color: #333A40
+}
+
+#thesisCardBody {
+    vertical-align: middle;
+    text-align: middle;
+}
+
+#appBottomPadding {
+    padding-bottom: 42px
+}
+
+div.card.app-tab div {
+    font-weight: 400;
+}
+
+div.card.app-tab.active div {
+    color: #45818E !important;
+}
+
+div.card.app-tab.active {
+    border-bottom: 1px solid #45818E;
+}
+
+div.app-row {
+    padding-top: 21px;
+    min-height: 141px;
+    margin: 0;
+}
+
+div.app-row div.row {
+    overflow-x: auto;
+    min-width: 100%;
+    flex-wrap: nowrap;
+}
+
+div.app-row div.row::-webkit-scrollbar {
+    display: none;
+  }
+
+div.app-row-number {
+    font-size: 5rem;
+    padding: 0 0 0 15px
+}
+
+div.active div.app-row-number {
+    color: #45818E !important;
+    border-left: 2px solid #45818E
+}
+
+div.card-component-standard {
+    border: 1px solid #E0E0E0;
+    min-height: 120px;
+}
+
+div.card-component-standard.active {
+    border: 1px solid #45818E;
+    -webkit-box-shadow: 1px 0.5px 4px 0px rgba(69,129,142,0.75);
+    -moz-box-shadow: 1px 0.5px 4px 0px rgba(69,129,142,0.75);
+    box-shadow: 1px 0.5px 4px 0px rgba(69,129,142,0.75);
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+div.card-component-std div.card-title {
+    color: #333A40;
+    font-size: 1.25rem
+}
+
+div.add-button {
+    border: none;
+    background-color: rgba(0,0,0,0);
+    height: 100%;
+    width: 100%;
+}
+
+div.add-button a i {
+    color: #E0E0E0;
+    font-size: 3rem;
+    transition: all 0.1s ease-in;
+}
+
+div.add-button a i:hover {
+    color: #45818E;
+    font-size: 3.5rem;
+    transition: all 0.1s ease-in;
+}
+
+.editable:focus {
+    outline: 2px groove #E0E0E0;
+    /* -webkit-box-shadow: 0px 0px 5px 2px rgba(69,129,142,1);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(69,129,142,1);
+    box-shadow: 0px 0px 5px 2px rgba(69,129,142,1); */
+}
+
+.col-app-card, .col-add-button {
+    padding: 0 10px 0 10px
+}
+
+div.col-app-card div.card-text {
+    min-height: 72px
+}

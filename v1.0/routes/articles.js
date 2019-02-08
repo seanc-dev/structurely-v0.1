@@ -3,8 +3,9 @@ var express = require("express"),
 
 var Article = require("../models/article");
     User    = require("../models/user");
+    Card    = require("../models/card");
 
-var router  = express.Router();
+var router  = express.Router({mergeParams: true});
 
 //var isToday()
 
@@ -13,7 +14,7 @@ router.get("/articles", isLoggedIn, function(req, res){
     User.findById(req.user.id, function(err, foundUser){
         if(err){
             console.log("articles.js line 12", err);
-            res.render("error", {errorMessage: "We couldn't connect to the database! Please try again later"});
+            res.render("error-page", {errorMessage: "We couldn't connect to the database! Please try again later"});
         } else {
             Article.find({
                 _id: {
@@ -22,7 +23,7 @@ router.get("/articles", isLoggedIn, function(req, res){
             }, function(err, foundArticles){
                 if(err){
                     console.log("articles.js line 22", err);
-                    res.render("error", {errorMessage: "We couldn't connect to the database! Please try again later"});
+                    res.render("error-page", {errorMessage: "We couldn't connect to the database! Please try again later"});
                 } else {
                     // console.log('article titles: ');
                     // foundArticles.forEach(function(article){console.log(article.title)});
@@ -35,20 +36,32 @@ router.get("/articles", isLoggedIn, function(req, res){
     });
 });
 
-// article plan (show)
-router.get("/articles/:id", isLoggedIn, function(req, res){
-    Card.find({}, function(err, cards){
+// show (plan/write)
+// router.get("/articles/:id", isLoggedIn, function(req, res){
+router.get("/articles/:id", function(req, res){
+    Article.findById(req.params.id, function(err, foundArticle){
         if(err){
-            console.log(err);
-            res.render("error", {errorMessage: "We couldn't connect to the database! Please try again later"});
+            console.log(err, "Couldn't find article in database");
+            res.render("error-page", {errorMessage: "We couldn't connect to the database! Please try again later"});
         } else {
-            cards.sort(function(a, b){
-                if(a.row-b.row === 0){
-                    return a.col-b.col
+            Card.find({
+                _id: {
+                    $in: foundArticle.cards
                 }
-                return a.row-b.row
+            }, function(err, foundCards){
+                if(err){
+                    console.log(err, "Error finding cards");
+                    res.render("error-page", {errorMessage: "We couldn't connect to the database! Please try again later"});
+                } else {
+                    foundCards.sort(function(a, b){
+                        if(a.row-b.row === 0){
+                            return a.col-b.col
+                        }
+                        return a.row-b.row
+                    });
+                    res.render("articles/show", {cards: foundCards, article: foundArticle});
+                }
             });
-            res.render("/articles/show", {cards: cards});
         }
     });
 });
@@ -58,7 +71,7 @@ router.post("/articles/new", isLoggedIn, function(req, res){
     Article.create(req.body.article, function(err, createdArticle){
         if(err){
             console.log('Error attempting to create new article in db');
-            res.render("error", {errorMessage: "We couldn't connect to the database! Please try again later"});
+            res.render("error-page", {errorMessage: "We couldn't connect to the database! Please try again later"});
         } else {
             User.findById(req.user.id, function(err, foundUser){
                 if(err){
@@ -68,12 +81,12 @@ router.post("/articles/new", isLoggedIn, function(req, res){
                     foundUser.save(function(err){
                         if(err){
                             console.log('Error saving User in /articles/new POST');
-                            res.render("error", {errorMessage: "We couldn't connect to the database! Please try again later"});
+                            res.render("error-page", {errorMessage: "We couldn't connect to the database! Please try again later"});
                         } else {
-                            if(req.body.redirect === "redirect"){
-                                res.redirect("/articles/" + createdArticle._id);
-                            } else {
+                            if(req.body.redirect === "no-redirect"){
                                 res.redirect("/articles");
+                            } else {
+                                res.redirect("/articles/" + createdArticle._id);
                             }
                         };
 
