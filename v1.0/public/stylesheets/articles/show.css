@@ -35,7 +35,7 @@ div.card.app-tab.active {
     border-bottom: 1px solid #45818E;
 }
 
-div.app-row {
+div.app-row, div.row-add-row {
     padding-top: 21px;
     min-height: 141px;
     margin: 0;
@@ -53,31 +53,58 @@ div.app-row div.row::-webkit-scrollbar {
 
 div.app-row-number {
     font-size: 5rem;
-    padding: 0 0 0 15px
+    vertical-align: middle;
+    color: #E0E0E0;
+    padding: 0 0 0 10px;
+    -webkit-transition: color 0.1s ease-out;
+    -moz-transition: color 0.1s ease-out;
+    -o-transition: color 0.1s ease-out;
+    transition: color 0.1s ease-out;
 }
 
 div.active div.app-row-number {
     color: #45818E !important;
-    border-left: 2px solid #45818E
+    -webkit-transition: color 0.1s ease-in;
+    -moz-transition: color 0.1s ease-in;
+    -o-transition: color 0.1s ease-in;
+    transition: color 0.1s ease-in;
 }
 
-div.card-component-standard {
+div.row-number-wrapper {
+    border-left: 2px solid #FFFFFF;
+    -webkit-transition: all 0.1s ease-out;
+    -moz-transition: all 0.1s ease-out;
+    -o-transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
+}
+
+div.active div.row-number-wrapper {
+    border-left: 2px solid #45818E;
+    -webkit-transition: all 0.1s ease-in;
+    -moz-transition: all 0.1s ease-in;
+    -o-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
+}
+
+div.card-component {
     border: 1px solid #E0E0E0;
+    box-shadow: none;
     min-height: 120px;
+    transition: all 0.1s ease-out;
 }
 
-div.card-component-standard.active {
+div.card-component.active {
     border: 1px solid #45818E;
     -webkit-box-shadow: 1px 0.5px 4px 0px rgba(69,129,142,0.75);
     -moz-box-shadow: 1px 0.5px 4px 0px rgba(69,129,142,0.75);
     box-shadow: 1px 0.5px 4px 0px rgba(69,129,142,0.75);
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
+    -webkit-transition: all 0.1s ease-in;
+    -moz-transition: all 0.1s ease-in;
+    -o-transition: all 0.1s ease-in;
+    transition: all 0.1s ease-in;
 }
 
-div.card-component-std div.card-title {
+div.card-component div.card-title {
     color: #333A40;
     font-size: 1.25rem
 }
@@ -103,15 +130,31 @@ div.add-button a i:hover {
 
 .editable:focus {
     outline: 2px groove #E0E0E0;
-    /* -webkit-box-shadow: 0px 0px 5px 2px rgba(69,129,142,1);
-    -moz-box-shadow: 0px 0px 5px 2px rgba(69,129,142,1);
-    box-shadow: 0px 0px 5px 2px rgba(69,129,142,1); */
 }
 
 .col-app-card, .col-add-button {
-    padding: 0 10px 0 10px
+    padding: 0 10px 0 10px;
+    min-height: 121px;
 }
 
 div.col-app-card div.card-text {
     min-height: 72px
+}
+
+div.col-app-card {
+    opacity: 0;
+}
+
+div.col-app-card.in {
+    opacity: 1;
+}
+
+i.fa-bars {
+    color: #E0E0E0 !important;
+    transition: color 0.1s ease-in;
+}
+
+i.fa-bars:hover {
+    color: #45818E !important;
+    transition: color 0.1s ease-in;
 }

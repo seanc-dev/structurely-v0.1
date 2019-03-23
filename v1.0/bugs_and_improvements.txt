@@ -1,13 +1,24 @@
 // BUGS
+
 // Articles index page:
 //  1. Search box does not include search icon. Need to re-work it to include search icon
 //  2. First .article-starter-card + is not expanding on hover.
+
+// Articles show page:
+//  1. Fix roman numeral overflow issue. Possibly with https://css-tricks.com/scaled-proportional-blocks-with-css-and-javascript/
 
 
 // IMPROVEMENTS
 
 // Data model
 //  1. Make articles share-able
+
+// Architecture
+//  1. Convert front-end to React. This will allow for real-time collaboration (creation of new cards etc.) and their immediate display.
+//      a. Requires cards to be built in back-end
+//      b. Content of cards will be held in array of array of objects (rows x cols x card-contents)
+//      c. App interface will be populated with nested for-loops running through each level of b. above
+    
 
 // Articles index page:
 //  1. Wire up search functionality
@@ -17,6 +28,8 @@
 
 // Articles show page:
 //  1. Build options popup
+//  2. When card-options functionality is available:
+//      a. Remove default card-create (or prompt to ask which the user would like..?)
 
 // Misc:
 //  1. Build out user pages (user/:id & user/:id/notifications)

@@ -46,7 +46,8 @@ app.use(function(req, res, next){
 });
 
 // ROUTES //
-app.use(require("./routes/articles"));
+app.use('/articles', require("./routes/articles"));
+app.use('/articles/:id/cards', require("./routes/cards"));
 // index must be defined last as it contains the * route
 app.use(require("./routes/index"));
 

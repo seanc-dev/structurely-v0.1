@@ -4,8 +4,8 @@ var cardSchema = new mongoose.Schema({
     // articleId: String, // id of the article to which this card belongs 
     // parentId: String, // probably the id of the row element this card will sit within? Unsure if necessary
     type: {
-        type: Number,
-        default: 0
+        type: String,
+        default: "standard"
     },
     row: {
         type: Number,
@@ -19,14 +19,14 @@ var cardSchema = new mongoose.Schema({
         type: Object,
         default: {
             title: {
-                key: 'card-title',
-                text: 'Paragraph "Title"',
-                tooltip: 'Click to add a title for this card'
+                class: "card-title",
+                text: "Card Title",
+                tooltip: "Click to add a suitable title for this card"
             },
             body: {
                 content: [{
-                    key: "card-text",
-                    text: "Write a simple sentence to describe the main point of this paragraph"
+                    class: "card-text",
+                    text: "Add a few notes to expand on the point you want to discuss in this section"
                 }],
                 tooltip: "Click to edit"
             }

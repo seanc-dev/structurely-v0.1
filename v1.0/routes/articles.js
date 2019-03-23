@@ -1,16 +1,16 @@
 var express = require("express"),
     moment  = require("moment");
 
+var middleware = require('./middleware.js');
+
 var Article = require("../models/article");
     User    = require("../models/user");
     Card    = require("../models/card");
 
 var router  = express.Router({mergeParams: true});
 
-//var isToday()
-
 // index
-router.get("/articles", isLoggedIn, function(req, res){
+router.get("/", middleware.isLoggedIn, function(req, res){
     User.findById(req.user.id, function(err, foundUser){
         if(err){
             console.log("articles.js line 12", err);
@@ -37,8 +37,8 @@ router.get("/articles", isLoggedIn, function(req, res){
 });
 
 // show (plan/write)
-// router.get("/articles/:id", isLoggedIn, function(req, res){
-router.get("/articles/:id", function(req, res){
+router.get("/:id", middleware.isLoggedIn, function(req, res){
+// router.get("/articles/:id", function(req, res){
     Article.findById(req.params.id, function(err, foundArticle){
         if(err){
             console.log(err, "Couldn't find article in database");
@@ -66,8 +66,9 @@ router.get("/articles/:id", function(req, res){
     });
 });
 
-// article new
-router.post("/articles/new", isLoggedIn, function(req, res){
+// create
+// router.post("/", middleware.isLoggedIn, function(req, res){
+router.post("/", function(req, res){
     Article.create(req.body.article, function(err, createdArticle){
         if(err){
             console.log('Error attempting to create new article in db');
@@ -97,13 +98,6 @@ router.post("/articles/new", isLoggedIn, function(req, res){
     });
 });
 
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-};
-
 function sortArticles(sortType, articlesArr){
     articlesArr.sort(function(a,b){
         if(sortType === 0){ // This denotes sorting by date desc
@@ -118,8 +112,6 @@ function sortArticles(sortType, articlesArr){
             if(a.title < b.title){return 1}
         }
     });
-    // console.log('End of sort title: ');
-    // articlesArr.forEach(function(article){console.log(article.title)});
     return articlesArr;
 }
 

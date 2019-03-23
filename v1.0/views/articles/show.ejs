@@ -8,7 +8,7 @@
                         <div class="col-9">
                             <!-- <div class="stretchy-wrapper ar-test"> -->
                                 <div class="card border-light-grey bg-teal mb-3">
-                                    <div id="thesisCardBody" class="card-body text-center lead p-2" contenteditable="true">
+                                    <div id="thesisCardBody" class="card-body text-center lead p-2 editable" contenteditable="true">
                                        <%= article.thesis %>
                                     </div>
                                 </div>
@@ -32,36 +32,21 @@
             <section id="appBody">
                 <div class="container container-slim p-0 bg-white">
                     <!-- first app row -->
-                    <div id="appRow-1" class="row app-row active">
-                        <div class="col-1 app-row-number text-center">
-                            I
+                    <div id="appRow-1" class="row app-row active" data-row-index="1">
+                        <div class="col-1 d-flex justify-content-center align-items-center row-number-wrapper row-activator">
+                            <div class="app-row-number text-center">
+                                I
+                            </div>
                         </div>
                         <!-- inner row for paragraph cards -->
                         <div class="col-10 p-0">
                             <div class="row m-0">
-                                <!-- initial card -->
-                                <div class='col-4 col-app-card'>
-                                    <div class="card card-component-standard active">
-                                        <div class="card-body p-2">
-                                            <div class="row">
-                                                <div class="col-10 d-stretch pr-0">
-                                                    <h6 class="card-title my-1 editable" contenteditable="true">First Paragraph</h6>
-                                                    <div class="card-text mb-1 editable" contenteditable="true">
-                                                        Write a simple sentence to describe the main point of this paragraph
-                                                    </div>
-                                                </div>
-                                                <div class="col-2 pl-0 text-center" style="padding-right: 10px">
-                                                    <
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!-- card-components inserted here -->
                                 <!-- card-add-button col -->
-                                <div class="col-4 col-add-button">
+                                <div class="col-4 col-add-button" data-col-index=1>
                                     <div class="card add-button">
                                         <div class="card-body d-flex align-items-center justify-content-center">
-                                            <a href="#" class="card-add-button"><i class="fas fa-plus-circle"></i></a>
+                                            <a href="#" class="card-add-button row-activator"><i class="fas fa-plus-circle"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -70,11 +55,11 @@
                         <div class="col-1 p-0"></div>
                     </div>
                     <!-- row for row-add-button -->
-                    <div class="row app-row">
-                        <div class="col-1 row-add-button align-items-center justify-content-center pr-0">
-                            <div class="card add-button row-add-button">
+                    <div class="row row-add-row">
+                        <div class="col-1 row-add-col align-items-center justify-content-center pr-0">
+                            <div class="card add-button">
                                 <div class="card-body d-flex align-items-center justify-content-center">
-                                    <a href="#"><i class="fas fa-plus-circle"></i></a>
+                                    <a href="#" class="row-add-button"><i class="fas fa-plus-circle"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -88,9 +73,13 @@
 
         <% include ../partials/cdns %>
 
-        <script src="js/data/cards.js"></script>	
-        <script src="js/articles/data.js"></script>	
-        <script src="js/articles/components.js"></script>	
-        <script src="js/articles/load.js"></script>
+        <script src="js/articles/show/plan/data/cards.js"></script>
+        <script src="js/articles/show/index.js"></script>
+        <script src="js/articles/show/plan/crud.js"></script>
+        <script src="js/articles/show/plan/data/rows.js"></script>
+        <script src="js/articles/show/plan/activators.js"></script>
+        <script src="js/articles/show/plan/buildCard.js"></script>
+        <script src="js/articles/show/plan/buildRow.js"></script>
+        <script src="js/articles/show/load.js"></script>
 
-<% include ../partials/footer %>
+<% include ../partials/footer-sans-cdns %>
