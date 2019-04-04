@@ -7,26 +7,55 @@ var Card    = require("../models/card");
 
 var router  = express.Router({mergeParams: true});
 
+// index
+router.get("/", middleware.isLoggedIn, function(req, res){
+    console.log('cards index route connected');
+    Article.findById(req.params.id, function(err, foundArticle){
+        if(err){
+            console.log(err);
+        } else {
+            Card.find({
+                _id: {
+                    $in: foundArticle.cards
+                }
+            }, function(err, foundCards){
+                if(err) {
+                    console.log(err);
+                } else {
+                    res.send({cards: foundCards});
+                }
+            });
+        }
+    });
+});
+
 // create
-router.post("/", function(req, res){
-    // handle post request
-    console.log(req.body);
+router.post("/", middleware.isLoggedIn, function(req, res){
     Card.create(req.body.card, function(err, createdCard){
         if(err){
-            console.log('Error, failed to create new card in database: ', err);
-            res.render("error-page", {errorMessage: "We couldn't connect to the database! Please try again later"});
+            console.log(err);
         } else {
-            console.log('createdCard: ', createdCard);
             // push createdCard._id into Article.cards for parent article and save article
             Article.findById(req.params.id, function(err, foundArticle){
                 if(err){
-                    console.log('Error: Cannot find Article in db (error in POST to /articles/:id/cards): ', err);
+                    console.log(err);
                 } else {
-                    foundArticle.cards.push(createdCard);
-                    foundArticle.save(function(err){
+                    createdCard.parentArticle = {
+                        id: foundArticle._id,
+                        title: foundArticle.title
+                    }
+                    createdCard.save(function(err){
                         if(err){
-                            console.log('Error: Cannot save Article in db (error in POST to /articles/:id/cards): ', err);
+                            console.log(err);
                         }
+                        console.log('createdCard: ' + createdCard);
+                        foundArticle.cards.push(createdCard);
+                        foundArticle.save(function(err){
+                            if(err){
+                                console.log(err);
+                            }
+                            console.log('parentArticle: ' + foundArticle);
+                        });
                     });
                 }
             });

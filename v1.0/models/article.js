@@ -1,6 +1,8 @@
-var mongoose    = require("mongoose");
+const   mongoose = require("mongoose");
 
-var articleSchema = new mongoose.Schema({
+const   Card = require("./card.js");
+
+const   articleSchema = new mongoose.Schema({
     //userId: String,
     title: {
         type: String,
@@ -8,7 +10,7 @@ var articleSchema = new mongoose.Schema({
     },
     thesis: {
         type: String,
-        default: "Here is where you can enter your thesis statement or the central question you're going to explore"
+        default: "Enter your thesis statement or the central question you're going to explore here"
     },
     backgroundImageUrl: String,
     lastUpdatedDateTime: Date,
@@ -22,6 +24,14 @@ var articleSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
+});
+
+articleSchema.pre('remove', async function(){
+    await Card.remove({
+        _id: {
+            $in: this.cards
+        }
+    });
 });
 
 module.exports = mongoose.model("Article", articleSchema);

@@ -39,3 +39,22 @@
 // BEFORE GOING LIVE
 // Routing
 //  1. Replace 'isLoggedIn' middleware in all routes
+
+
+// IDEAS
+
+// Text Editor:
+//  1. Collaborative
+//  2. LaTeX integrated for PDF export
+
+// Database:
+//  1. Data versioning to enable source-control
+        - Diffs or complete?
+        - Separate history collection? How will the historical documents be recalled?
+        - How long is history kept? How do we treat documents for inactive or deleted users?
+            - Raises a whole bunch of data governance questions for users who leave the platform (this will potentially be many
+                + if I'm targetting universities and their students)
+        - Possibly use mongoose-version, though there may be good reasons not to use its model of 1 doc (per current version)
+            + in archive collection with old versions pushed into array.
+                - See here for discussion: https://stackoverflow.com/questions/33707861/mongodb-data-versioning-with-search
+                    + (second answer)

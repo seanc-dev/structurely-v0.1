@@ -1,33 +1,36 @@
-// create new card and set element id to db in in callback
+// same as above but ajax re-written with axios
 function createCard(cardEl, cardData){
     cardData = cardData || {};
+    console.log(cardData);
     // find articleId in URL
     var articleId = window.location.href.split("/").pop();
     // post new card data to server to create db entry
-    $.ajax({
-        method: "POST",
-        url: "/articles/" + articleId + "/cards",
-        data: {
-            card: cardData
-        },
-        success: function(newCardId, textStatus){
-            console.log('post successful');
-            cardEl.attr('id', newCardId);
-        },
-        error: function(jqXHR, textStatus, errorThrown){
-            console.log('post unsuccessful');
-            console.log('errorThrown: ', errorThrown);
-        }
+    axios.post('/articles/' + articleId + '/cards', cardData
+        )
+        .then(function(response){
+            cardEl.attr('id', response);
+        })
+        .catch(function(error){
+            console.log(error);
     });
 }
 
-// // read data in existing card
-// function readCard(id){
-//     // return 
-// }
+// // read data in existing cards
+function readCards(articleId){
+    console.log('readCards function initialised');
+    axios.get('/articles/' + articleId + '/cards')
+        .then(function(resolve){
+            console.log('success callback initialised');
+            console.log(resolve.data);
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+    // return cards array
+}
 
 // update data in existing card
-function updateCard(id, obj){
+function updateCards(){
     
 }
 

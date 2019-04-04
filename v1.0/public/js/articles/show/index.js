@@ -23,3 +23,5 @@ function setElementAsActive(elToActivate, targetElSelector){
         elToActivate.focus().addClass('active');
     }
 }
+
+// function initializeCardData()

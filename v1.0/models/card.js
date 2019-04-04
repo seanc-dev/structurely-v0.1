@@ -1,8 +1,13 @@
-var mongoose    = require("mongoose");
+const   mongoose = require("mongoose");
 
-var cardSchema = new mongoose.Schema({
-    // articleId: String, // id of the article to which this card belongs 
-    // parentId: String, // probably the id of the row element this card will sit within? Unsure if necessary
+const cardSchema = new mongoose.Schema({
+    parentArticle: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Article"
+        },
+        title: String
+    },
     type: {
         type: String,
         default: "standard"

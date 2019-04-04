@@ -10,6 +10,12 @@ $(document).ready(function(){
 
 
     function init() {
+
+        const articleId = window.location.href.split("/").pop();
+
+        // pull in cards data and save to local storage
+        readCards(articleId);
+
         // add event handler
         handlerAppTab(appTabs);
         handlerCardAddButton(cardAddButton);
@@ -22,8 +28,8 @@ $(document).ready(function(){
 
     init();
 
-    $('a[href="#"]').click(function(e) {
-        e.preventDefault ? e.preventDefault() : e.returnValue = false;
-    });
+    // $('a[href="#"]').click(function(e) {
+    //     e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    // });
 
 });

@@ -1,0 +1,9 @@
+1. Find out why cards are not creating to article on article creation
+a. Card add button is clicked on article show page.
+    - This triggers the insertCard function which creates a col div containing a card element.
+    - Next, the click handler finds the card part of the created element and passes that to the createCard function (found in public/js/articles/show/plan/crud.js).
+        + with 
+ = Fuck it, I'm just gonna rebuild the card creation properly and base the values off an array of card objects.
+    - before I do that I really need to better understand error-handling, asynchronous coding, and promises
+
+2. Find out why cards are creating with (at least) default row and col index data
